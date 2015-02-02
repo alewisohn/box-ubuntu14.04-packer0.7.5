@@ -1,5 +1,5 @@
 name: ubuntu14.04-packer0.7.5
-version: 1.0.2
+version: 1.0.3
 description: Ubuntu 14.04 with Packer 0.7.5
 type: main
 platform: ubuntu@12.04
@@ -40,7 +40,7 @@ script: |
   wget https://dl.bintray.com/mitchellh/packer/packer_${PACKER_VERSION}_linux_amd64.zip
   unzip packer_${PACKER_VERSION}_linux_amd64.zip
   rm packer_${PACKER_VERSION}_linux_amd64.zip
-  export PATH="$HOME/packer:$PATH"
+  echo "PATH=\"$HOME/packer:$PATH\"" | sudo tee -a /etc/environment
 
   # Install AWS CLI
   mkdir -p $HOME/aws
