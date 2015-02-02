@@ -1,5 +1,5 @@
 name: ubuntu14.04-packer0.7.5
-version: 1.0.3
+version: 1.0.4
 description: Ubuntu 14.04 with Packer 0.7.5
 type: main
 platform: ubuntu@12.04
@@ -13,6 +13,7 @@ packages:
   - aws
   - git
   - jq
+  - ruby
   - wget
   - unzip
   - ansible@1.7.1
@@ -26,7 +27,7 @@ script: |
   # Install System Packages
   sudo apt-get update
   sudo apt-get install -y software-properties-common
-  sudo apt-get install -y git jq unzip wget
+  sudo apt-get install -y git jq ruby unzip wget
 
   # Install Ansible
   sudo add-apt-repository -y ppa:rquillo/ansible
