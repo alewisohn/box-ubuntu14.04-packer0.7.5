@@ -19,9 +19,9 @@ packages:
   - packer@0.7.5  
 script: |
   # Upgrade to Ubuntu 14.04
-  #sudo apt-get update
-  #sudo apt-get install -y update-manager-core
-  #sudo do-release-upgrade -f DistUpgradeViewNonInteractive -m server -d
+  sudo apt-get update
+  sudo apt-get install -y update-manager-core
+  sudo do-release-upgrade -f DistUpgradeViewNonInteractive -m server -d
 
   # Install System Packages
   sudo apt-get update
