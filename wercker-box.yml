@@ -1,0 +1,34 @@
+name: ubuntu14.04-packer0.7.5
+version: 1.0.0
+description: Ubuntu 14.04 with Packer 0.7.5
+inherits: ubuntu12.04-webessentials
+type: main
+platform: ubuntu@12.04
+keywords:
+  - ubuntu
+  - 14.04
+  - trusty
+  - packer
+  - aws
+packages:
+  - ansible@1.7.1
+  - packer@0.7.5  
+script: |
+  sudo apt-get update
+  sudo apt-get install -y update-manager-core
+  sudo do-release-upgrade -f DistUpgradeViewNonInteractive -m server -d
+  sudo apt-get install -y aptitude
+  sudo apt-get safe-upgrade
+  sudo apt-get install -y software-properties-common
+  sudo apt-get install -y unzip jq
+  sudo add-apt-repository -y ppa:rquillo/ansible
+  sudo apt-get update
+  sudo apt-get install -y ansible=1.7.1-trusty-unstable-ppa
+  export PACKER_VERSION=0.7.5
+  mkdir -p $HOME/packer
+  cd $HOME/packer
+  wget https://dl.bintray.com/mitchellh/packer/${PACKER_VERSION}_linux_amd64.zip
+  unzip ${PACKER_VERSION}_linux_amd64.zip
+  rm ${PACKER_VERSION}_linux_amd64.zip
+  export PATH="$HOME/packer:$PATH"
+  
